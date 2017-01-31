@@ -2,8 +2,11 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 #export LSCOLORS=ExFxBxDxCxegedabagacad
 
+PATH=/usr/local/bin:$PATH
+
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+    source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 fi
 
 # EXPORTS

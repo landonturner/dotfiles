@@ -26,6 +26,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " CtrlP - fuzzy finder
 noremap <localleader>ff :CtrlP<CR>
 noremap <localleader>be :CtrlPBuffer<CR>
+noremap <localleader>fr :CtrlPClearCache<CR>
 
 " Movement
 noremap H ^
@@ -33,5 +34,8 @@ noremap L $
 inoremap jk <Esc>
 vnoremap jk <Esc>
 
+command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
+
 " Run last command
-noremap <localleader>r :!tmux send-keys -t right run_last_command C-m<CR><CR>
+noremap <localleader>rl :Silent tmux send-keys -t right run_last_command C-m<CR><CR>
+noremap <localleader>rb :Silent tmux send-keys -t right rspec " " % C-m<CR><CR>
