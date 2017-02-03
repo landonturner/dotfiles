@@ -32,7 +32,6 @@ noremap <localleader>fr :CtrlPClearCache<CR>
 noremap H ^
 noremap L $
 inoremap jk <Esc>
-vnoremap jk <Esc>
 
 command! -nargs=1 Silent
       \   execute 'silent !' . <q-args>
