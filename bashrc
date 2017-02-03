@@ -21,3 +21,4 @@ function run_last_command {
   eval $(history 2 | head -n 1 | awk '{for (i=2; i<=NF; i++) printf $i" "}')
   history -d $(history | tail -n 1 | awk '{ print $1 }')
 }
+alias dbdo="./bin/rails db:migrate RAILS_ENV=test"
