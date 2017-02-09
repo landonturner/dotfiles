@@ -15,7 +15,8 @@ export PS1='\[\e[32m\]\w\[\e[91m\]$(__git_ps1) \[\e[93m\]$ \[\e[0m\]'
 # ALIASES
 alias ll='ls -lrt'
 alias la='ls -alrth'
-alias tmux="tmux -S /tmp/me-${RANDOM}"
+alias tmux_outer="tmux -L outer_tmux_socket"
+alias tmux="tmux -L tmux-${RANDOM}"
 
 function run_last_command {
   eval $(history 2 | head -n 1 | awk '{for (i=2; i<=NF; i++) printf $i" "}')

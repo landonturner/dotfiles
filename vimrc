@@ -18,6 +18,9 @@ set backspace=indent,eol,start
 " Tab settings
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
+" Scroll settings
+set scrolloff=5
+
 " Nerd Tree Things
 noremap <localleader>nt :NERDTreeToggle<CR>
 noremap <localleader>nr :NERDTree<CR>
@@ -42,3 +45,4 @@ noremap <localleader>rl :Silent tmux send-keys -t right run_last_command C-m<CR>
 
 " Run current specfile
 noremap <localleader>rb :Silent tmux send-keys -t right rspec " " % C-m<CR>
+
