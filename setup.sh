@@ -4,12 +4,19 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo $DIR
 
-# Create symlinks
+
+# Create folders
+VIM_DIR="${HOME}/.vim/bundle"
+mkdir -p ${VIM_DIR}
 
 # Create symlinks
+ln -s "${DIR}/vim/autoload" "${HOME}/.vim/autoload"
+ln -s "${DIR}/tmux.conf" "${HOME}/.tmux.conf"
+ln -s "${DIR}/vimrc" "${HOME}/.vimrc"
+ln -s "${DIR}/bashrc" "${HOME}/.bashrc"
 
 # Install the vim bundles
-pushd "${DIR}/vim/bundle" > /dev/null
+pushd ${VIM_DIR}
 declare -a git_commands=(
   "git clone https://github.com/scrooloose/nerdtree"
   "git clone https://github.com/kien/ctrlp.vim"
@@ -28,4 +35,4 @@ do
   fi
 done
 
-popd > /dev/null
+popd
