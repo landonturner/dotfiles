@@ -17,6 +17,7 @@ alias ll='ls -lrt'
 alias la='ls -alrth'
 alias tmux_outer="tmux -L outer_tmux_socket"
 alias tmux="tmux -L tmux-${RANDOM}"
+alias ressh='eval $(ssh-agent); ssh-add'
 
 function run_last_command {
   eval $(history 2 | head -n 1 | awk '{for (i=2; i<=NF; i++) printf $i" "}')
