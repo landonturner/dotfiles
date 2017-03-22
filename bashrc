@@ -24,3 +24,5 @@ function run_last_command {
   history -d $(history | tail -n 1 | awk '{ print $1 }')
 }
 alias dbdo="./bin/rails db:migrate RAILS_ENV=test"
+
+alias redshift='psql -h bt-data-production.cizsr4oqzecy.us-east-1.redshift.amazonaws.com -p 5439 -d warehouse -U lanturner_ro'

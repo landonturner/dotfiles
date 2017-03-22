@@ -1,9 +1,19 @@
-execute pathogen#infect()
-Helptags
-syntax enable
-filetype plugin indent on
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+
+" Plugins
+Plug 'altercation/vim-colors-solarized'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
+
+call plug#end()
 
 " Visuals
+syntax enable
+filetype plugin indent on
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
@@ -37,12 +47,11 @@ noremap L $
 inoremap jk <Esc>
 
 command! -nargs=1 Silent
-      \   execute 'silent !' . <q-args>
-      \ | execute 'redraw!'
+     "\   execute 'silent !' . <q-args>
+     "\ | execute 'redraw!'
 
 " Run last command
 noremap <localleader>rl :Silent tmux send-keys -t right run_last_command C-m<CR>
 
 " Run current specfile
 noremap <localleader>rb :Silent tmux send-keys -t right rspec " " % C-m<CR>
-
