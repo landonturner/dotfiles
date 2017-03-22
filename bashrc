@@ -9,6 +9,10 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 fi
 
+if [ -f ~/.local_bashrc ]; then
+  source ~/.local_bashrc
+fi
+
 # EXPORTS
 export PS1='\[\e[32m\]\w\[\e[91m\]$(__git_ps1) \[\e[93m\]$ \[\e[0m\]'
 
@@ -24,5 +28,3 @@ function run_last_command {
   history -d $(history | tail -n 1 | awk '{ print $1 }')
 }
 alias dbdo="./bin/rails db:migrate RAILS_ENV=test"
-
-alias redshift='psql -h bt-data-production.cizsr4oqzecy.us-east-1.redshift.amazonaws.com -p 5439 -d warehouse -U lanturner_ro'
