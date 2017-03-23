@@ -1,6 +1,5 @@
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-#export LSCOLORS=ExFxBxDxCxegedabagacad
 
 PATH=/usr/local/bin:$PATH
 
@@ -19,8 +18,6 @@ export PS1='\[\e[32m\]\w\[\e[91m\]$(__git_ps1) \[\e[93m\]$ \[\e[0m\]'
 # ALIASES
 alias ll='ls -lrt'
 alias la='ls -alrth'
-alias tmux_outer="tmux -L outer_tmux_socket"
-alias tmux="tmux -L tmux-${RANDOM}"
 alias ressh='eval $(ssh-agent); ssh-add'
 
 function run_last_command {
