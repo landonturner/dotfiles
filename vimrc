@@ -35,6 +35,7 @@ set scrolloff=5
 noremap <localleader>nt :NERDTreeToggle<CR>
 noremap <localleader>nr :NERDTree<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeIgnore = ['\.pyc$', '\.swp$']
 
 " CtrlP - fuzzy finder
 noremap <localleader>ff :CtrlP<CR>
@@ -47,8 +48,8 @@ noremap L $
 inoremap jk <Esc>
 
 command! -nargs=1 Silent
-     "\   execute 'silent !' . <q-args>
-     "\ | execute 'redraw!'
+     \   execute 'silent !' . <q-args>
+     \ | execute 'redraw!'
 
 " Run last command
 noremap <localleader>rl :Silent tmux send-keys -t right run_last_command C-m<CR>
