@@ -19,6 +19,7 @@ set background=dark
 colorscheme solarized
 
 set number
+set hlsearch
 
 let maplocalleader = ","
 
