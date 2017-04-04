@@ -57,3 +57,6 @@ noremap <localleader>rl :Silent tmux send-keys -t right run_last_command C-m<CR>
 
 " Run current specfile
 noremap <localleader>rb :Silent tmux send-keys -t right rspec " " % C-m<CR>
+
+" unlight with leader nh
+noremap <localleader>nh :noh<CR>
