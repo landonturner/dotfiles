@@ -12,6 +12,10 @@ if [ -f ~/.local_bashrc ]; then
   source ~/.local_bashrc
 fi
 
+if [ -d ~/bin ]; then
+  PATH=${HOME}/bin:$PATH
+fi
+
 # EXPORTS
 export PS1='\[\e[32m\]\w\[\e[91m\]$(__git_ps1) \[\e[93m\]$ \[\e[0m\]'
 
@@ -19,6 +23,7 @@ export PS1='\[\e[32m\]\w\[\e[91m\]$(__git_ps1) \[\e[93m\]$ \[\e[0m\]'
 alias ll='ls -lrt'
 alias la='ls -alrth'
 alias ressh='eval $(ssh-agent); ssh-add'
+alias dc='docker-compose'
 
 function run_last_command {
   eval $(history 2 | head -n 1 | awk '{for (i=2; i<=NF; i++) printf $i" "}')
