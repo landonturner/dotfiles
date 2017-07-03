@@ -13,6 +13,7 @@ call plug#end()
 
 " Visuals
 syntax enable
+filetype plugin on
 filetype plugin indent on
 let g:solarized_termcolors=256
 set background=dark
@@ -21,6 +22,7 @@ colorscheme solarized
 set number
 set hlsearch
 
+let mapleader = ","
 let maplocalleader = ","
 
 " Delete the new line as well
@@ -42,6 +44,9 @@ let NERDTreeIgnore = ['\.pyc$', '\.swp$']
 noremap <localleader>ff :CtrlP<CR>
 noremap <localleader>be :CtrlPBuffer<CR>
 noremap <localleader>fr :CtrlPClearCache<CR>
+
+" Nerd Commenter
+noremap <localleader>cc k
 
 " Movement
 noremap H ^
