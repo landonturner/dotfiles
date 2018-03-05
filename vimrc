@@ -3,11 +3,18 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 Plug 'altercation/vim-colors-solarized'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
+Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -18,6 +25,9 @@ filetype plugin indent on
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+
+" allow jsx files under .js extension
+let g:jsx_ext_required = 0
 
 set number
 set hlsearch
@@ -65,3 +75,9 @@ noremap <localleader>rb :Silent tmux send-keys -t right rspec " " % C-m<CR>
 
 " unlight with leader nh
 noremap <localleader>nh :noh<CR>
+
+" icons for nerd tree
+set encoding=utf8
+
+" let vim update faster for git on side
+set updatetime=100
