@@ -39,7 +39,7 @@ let maplocalleader = ","
 set backspace=indent,eol,start
 
 " Tab settings
-set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " Scroll settings
 set scrolloff=5
