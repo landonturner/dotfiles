@@ -9,12 +9,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -23,11 +23,11 @@ syntax enable
 filetype plugin on
 filetype plugin indent on
 let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
 
-" allow jsx files under .js extension
-let g:jsx_ext_required = 0
+let background_color = empty($LIGHT)?"dark":"light"
+exe "set background=".background_color
+
+colorscheme solarized
 
 set number
 set hlsearch
@@ -35,11 +35,14 @@ set hlsearch
 let mapleader = ","
 let maplocalleader = ","
 
+" Vue settings
+let g:vue_disable_pre_processors=1
+
 " Delete the new line as well
 set backspace=indent,eol,start
 
 " Tab settings
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Scroll settings
 set scrolloff=5
@@ -54,6 +57,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.swp$']
 noremap <localleader>ff :CtrlP<CR>
 noremap <localleader>be :CtrlPBuffer<CR>
 noremap <localleader>fr :CtrlPClearCache<CR>
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " Nerd Commenter
 noremap <localleader>cc k
@@ -61,14 +65,13 @@ noremap <localleader>cc k
 " Movement
 noremap H ^
 noremap L $
-inoremap jk <Esc>
 
 command! -nargs=1 Silent
      \   execute 'silent !' . <q-args>
      \ | execute 'redraw!'
 
 " Run last command
-noremap <localleader>rl :Silent tmux send-keys -t right run_last_command C-m<CR>
+noremap <localleader>rl :Silent tmux send-keys -t right C-c run_last_command C-m<CR>
 
 " Run current specfile
 noremap <localleader>rb :Silent tmux send-keys -t right rspec " " % C-m<CR>
