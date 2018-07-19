@@ -29,3 +29,7 @@ function run_last_command {
   eval $(history 2 | head -n 1 | awk '{for (i=2; i<=NF; i++) printf $i" "}')
   history -d $(history 1 | awk '{ print $1 }')
 }
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
