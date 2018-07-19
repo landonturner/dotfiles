@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-mkdir ${DIR}/vim/colors
+mkdir -p ${DIR}/vim/colors ${DIR}/vim/{.swp,.backup,.undo}
 
 # VIM installation
 ln -s ${DIR}/vim ~/.vim

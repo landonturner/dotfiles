@@ -27,6 +27,10 @@ let g:solarized_termcolors=256
 let background_color = empty($LIGHT)?"dark":"light"
 exe "set background=".background_color
 
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+
 colorscheme solarized
 
 set number
