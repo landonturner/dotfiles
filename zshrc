@@ -41,6 +41,8 @@ alias gco='git checkout'
 alias ff="fzf --ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 alias scripts='cat package.json | jq .scripts'
 alias grep='grep --color'
+# open git repo in browser
+alias gh="open `git remote -v | grep fetch | awk '{print $2}' | sed 's/git@/http:\/\//' | sed 's/com:/com\//'`| head -n1"
 
 if [ -d ~/bin ]; then
   export PATH=${HOME}/bin:$PATH
