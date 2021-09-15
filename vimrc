@@ -75,10 +75,7 @@ command! -nargs=1 Silent
      \ | execute 'redraw!'
 
 " Run last command
-noremap <localleader>rl :Silent tmux send-keys -t right C-c run_last_command C-m<CR>
-
-" Run current specfile
-noremap <localleader>rb :Silent tmux send-keys -t right rspec " " % C-m<CR>
+noremap <localleader>rl :Silent tmux send-keys -t right C-c \!\! C-m<CR>
 
 " unlight with leader nh
 noremap <localleader>nh :noh<CR>
