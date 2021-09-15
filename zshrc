@@ -42,7 +42,9 @@ alias ff="fzf --ansi --preview-window 'right:60%' --preview 'bat --color=always 
 alias scripts='cat package.json | jq .scripts'
 alias grep='grep --color'
 # open git repo in browser
-alias gh="open `git remote -v | grep fetch | awk '{print $2}' | sed 's/git@/http:\/\//' | sed 's/com:/com\//'`| head -n1"
+gh(){
+  open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
+}
 
 if [ -d ~/bin ]; then
   export PATH=${HOME}/bin:$PATH
