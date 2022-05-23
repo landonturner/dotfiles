@@ -41,22 +41,42 @@ alias gco='git checkout'
 alias ff="fzf --ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 alias scripts='cat package.json | jq .scripts'
 alias grep='grep --color'
-# open git repo in browser
-gh(){
-  open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
-}
+alias beep='afplay /System/Library/Sounds/Funk.aiff'
 
+# # open git repo in browser
+# gh(){
+#   open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
+# }
+
+PATH=$(pyenv root)/shims:$PATH
 if [ -d ~/bin ]; then
   export PATH=${HOME}/bin:$PATH
 fi
 
 export GPG_TTY=$(tty)
 export DOCKER_BUILDKIT=1
+export EDITOR=vim
 
-export TANIUM_COMPOSE_PATH=~/git.corp.tanium.com/tanium/compose
+export TANIUM_COMPOSE_PATH=~/src/git.corp.tanium.com/tanium/compose
+
+eval "$(fnm env)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
 
 eval "$(direnv hook zsh)"
+
+# navigate to source folder (ctrl-n)
+function navigate() {
+  local new_dir=$(fd . $HOME/src/ --max-depth 3 --min-depth 3 -H | fzf || echo .)
+  cd $new_dir
+  local precmd
+  for precmd in $precmd_functions; do
+    $precmd
+  done
+  zle reset-prompt
+} 
+zle -N navigate
+bindkey '^n' navigate
+
