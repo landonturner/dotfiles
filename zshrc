@@ -69,8 +69,7 @@ eval "$(direnv hook zsh)"
 
 # navigate to source folder (ctrl-n)
 function navigate() {
-  local new_dir=$(fd . $HOME/src/ --max-depth 3 --min-depth 3 -H | fzf || echo .)
-  cd $new_dir
+  cd $(fd . $HOME/src/ --max-depth 3 --min-depth 3 -H | fzf || echo .)
   local precmd
   for precmd in $precmd_functions; do
     $precmd
