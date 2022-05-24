@@ -41,7 +41,7 @@ alias gco='git checkout'
 alias ff="fzf --ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 alias scripts='cat package.json | jq .scripts'
 alias grep='grep --color'
-alias beep='afplay /System/Library/Sounds/Funk.aiff'
+alias beep='(afplay /System/Library/Sounds/Funk.aiff&) > /dev/null 2>&1'
 
 # # open git repo in browser
 # gh(){
@@ -69,7 +69,7 @@ eval "$(direnv hook zsh)"
 
 # navigate to source folder (ctrl-n)
 function navigate() {
-  cd $(fd . $HOME/src/ --max-depth 3 --min-depth 3 -H | fzf || echo .)
+  cd $(fd . $HOME/src/ --max-depth 3 --min-depth 3 -H -t directory | fzf --no-multi || echo .)
   local precmd
   for precmd in $precmd_functions; do
     $precmd
