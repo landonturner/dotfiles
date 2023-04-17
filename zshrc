@@ -41,7 +41,6 @@ alias gco='git checkout'
 alias ff="fzf --ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 alias scripts='cat package.json | jq .scripts'
 alias grep='grep --color'
-alias beep='(afplay /System/Library/Sounds/Funk.aiff&) > /dev/null 2>&1'
 
 # # open git repo in browser
 # gh(){
@@ -66,6 +65,17 @@ eval "$(fnm env)"
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
 
 eval "$(direnv hook zsh)"
+
+function beep {
+  previous_exit=$?
+  good_noise=/System/Library/Sounds/Funk.aiff
+  bad_noise=/System/Library/Sounds/Basso.aiff
+  if [ ${previous_exit} -eq 0 ]; then
+    (afplay ${good_noise}&) > /dev/null 2>&1
+  else
+    (afplay ${bad_noise}&) > /dev/null 2>&1
+  fi
+}
 
 # navigate to source folder (ctrl-n)
 function navigate() {
