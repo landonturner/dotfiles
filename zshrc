@@ -77,15 +77,23 @@ function beep {
   fi
 }
 
-# navigate to source folder (ctrl-n)
-function navigate() {
-  cd $(fd . $HOME/src/ --max-depth 3 --min-depth 3 -H -t directory | fzf --no-multi || echo .)
+# go-to-repo allows ctrl-n to open a repo. rename tmux window if in session
+function go-to-repo {
+  dir=$(fd . $HOME/src/ --max-depth 3 --min-depth 3 -H -t directory | fzf --no-multi || echo .)
+  cd "${dir}"
+
+  if [ "${dir}" != '.' ] && [ "${TERM_PROGRAM}" = "tmux" ]; then
+    D2=$(dirname "$dir")
+    DIRNAME2=$(basename "$D2")/$(basename "$dir")
+    tmux rename-window $DIRNAME2
+  fi
+
   local precmd
   for precmd in $precmd_functions; do
     $precmd
   done
   zle reset-prompt
-} 
-zle -N navigate
-bindkey '^n' navigate
+}
+zle -N go-to-repo
+bindkey '^n' go-to-repo
 
